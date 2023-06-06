@@ -12,7 +12,7 @@ export default function Header({ isOpen, setSidebarOpen }) {
       <div className={styles.icon} onClick={() => setSidebarOpen(!isOpen)}>
         <TbAdjustmentsFilled color="#f6f1f1" size="40px" />
       </div>
-      <h2 className={styles.Header_title}> {module}</h2>
+      <h2 className={styles.Header_title}> {module ? module : ""}</h2>
       <div className={styles.icon} onClick={() => router.push("/")}>
         <TbSmartHome color="#f6f1f1" size="40px" />
       </div>
