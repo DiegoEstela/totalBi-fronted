@@ -12,14 +12,23 @@ const queryClient = new QueryClient();
 
 export default function RootLayout({ children }) {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [module, setModule] = useState("Home");
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header isOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Header
+          isOpen={isSidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          module={module}
+        />
         <main className="mainContainer">
           <QueryClientProvider client={queryClient}>
             <AuthProvider>
-              <Sidebar isOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />
+              <Sidebar
+                isOpen={isSidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+                setModule={setModule}
+              />
               {children}
             </AuthProvider>
           </QueryClientProvider>

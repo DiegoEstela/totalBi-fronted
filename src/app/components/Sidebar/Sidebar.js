@@ -16,7 +16,7 @@ import { AuthContext } from "@/context/AuthProvider";
 import { getUserData } from "@/api/user/getUserData";
 import { useQuery } from "react-query";
 
-export default function Sidebar({ isOpen, setSidebarOpen }) {
+export default function Sidebar({ isOpen, setSidebarOpen, setModule }) {
   const [showBox, setShowBox] = useState(false);
   const router = useRouter();
   const { user } = useContext(AuthContext);
@@ -31,7 +31,8 @@ export default function Sidebar({ isOpen, setSidebarOpen }) {
   };
 
   const habldeRoute = (path, module) => {
-    router.push(`/Basic/${path}?module=${module}`);
+    router.push(`/Basic/${path}`);
+    setModule(module);
     setSidebarOpen(!isOpen);
   };
 
