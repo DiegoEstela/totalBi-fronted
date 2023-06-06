@@ -2,7 +2,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/db/db";
-import Loader from "@/app/components/Loader/Loader";
+import FullLoader from "@/app/components/FullLoader/FullLoader";
 import Login from "@/app/Login/Login";
 
 const AuthContext = createContext();
@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
     <>
       :
       <AuthContext.Provider value={{ user }}>
-        {loading ? <Loader /> : user ? <>{children} </> : <Login />}
+        {loading ? <FullLoader /> : user ? <>{children} </> : <Login />}
       </AuthContext.Provider>
     </>
   );

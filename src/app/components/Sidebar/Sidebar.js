@@ -7,14 +7,17 @@ import {
   BiCalendarMinus,
   BiWindowClose,
 } from "react-icons/bi";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { TbAdjustmentsOff } from "react-icons/tb";
 import { useRouter } from "next/navigation";
 import { auth } from "@/db/db";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "@/context/AuthProvider";
 import { getUserData } from "@/api/user/getUserData";
 import { useQuery } from "react-query";
 
 export default function Sidebar({ isOpen, setSidebarOpen }) {
+  const [showBox, setShowBox] = useState(false);
   const router = useRouter();
   const { user } = useContext(AuthContext);
   const { data: userData, isSuccess } = useQuery(["userData", user?.uid], () =>
@@ -23,29 +26,77 @@ export default function Sidebar({ isOpen, setSidebarOpen }) {
 
   const handleLogout = async () => {
     await auth.signOut();
+    await setSidebarOpen(!isOpen);
     router.push("/");
+  };
+
+  const habldeRoute = (path, module) => {
+    router.push(`/Basic/${path}?module=${module}`);
+    setSidebarOpen(!isOpen);
   };
 
   return (
     <>
       <div className={`sidebar${isOpen ? "_open" : "_close"}`}>
         <div className={`sidebar_container${isOpen ? "_open" : "_close"}`}>
-          <h1 className="sidebar_title">TotalBi</h1>
+          <header className="sidebar_header">
+            <h1 className="sidebar_title">TotalBi</h1>
+            <TbAdjustmentsOff
+              color="white"
+              size="40px"
+              onClick={() => setSidebarOpen(!isOpen)}
+            />
+          </header>
+
           <div className="sidebar_account">
             {isSuccess && <h2>{userData.titleApp}</h2>}
-
-            <p className="account_p"> Caja : ***</p>
+            <div className="sidebar_account_row">
+              {showBox ? (
+                <>
+                  <p className="account_p">
+                    {" "}
+                    Caja : <span className="account_span"> *** </span>
+                  </p>
+                  <AiFillEye
+                    color="white"
+                    size="24px"
+                    onClick={() => setShowBox(!showBox)}
+                  />
+                </>
+              ) : (
+                <>
+                  <p className="account_p">
+                    {" "}
+                    Caja : <span className="account_span"> $+54.321</span>
+                  </p>
+                  <AiFillEyeInvisible
+                    color="white"
+                    size="24px"
+                    onClick={() => setShowBox(!showBox)}
+                  />
+                </>
+              )}
+            </div>
           </div>
           <ul className="sidebar_nav">
-            <li className="sidebar_tab">
+            <li
+              className="sidebar_tab"
+              onClick={() => habldeRoute("AbmCustomers", "Clientes")}
+            >
               <BiUserPin color="#ce7c00" size="32px" />
               <p className="tab_p">CLIENTES</p>
             </li>
-            <li className="sidebar_tab">
+            <li
+              className="sidebar_tab"
+              onClick={() => habldeRoute("AbmProducts", "Productos")}
+            >
               <BiPackage color="#ce7c00" size="32px" />
               <p className="tab_p">PRODUCTOS</p>
             </li>
-            <li className="sidebar_tab">
+            <li
+              className="sidebar_tab"
+              onClick={() => habldeRoute("AbmServices", "Services")}
+            >
               <BiBulb color="#ce7c00" size="32px" />
               <p className="tab_p">SERVICIOS</p>
             </li>

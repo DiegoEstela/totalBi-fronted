@@ -8,6 +8,19 @@
   z-index: 1;
 }
 
+.sidebar_header {
+  height: 10vh;
+  padding: 0 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ce7c00;
+}
+
+.sidebar_header:hover {
+  cursor: pointer;
+}
+
 .sidebar_open {
   position: absolute;
   display: flex;
@@ -50,7 +63,6 @@
   align-items: center;
   padding: 4px;
   width: 100%;
-  height: 8svh;
   justify-content: center;
   text-align: center;
   color: var(--white);
@@ -73,13 +85,27 @@ h2 {
   color: var(--white);
 }
 
+.sidebar_account_row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 4%;
+}
+
 .account_p {
   display: flex;
-  width: 100%;
+  margin-right: 15%;
   padding: 4px;
-  font-size: 1rem;
-  justify-content: center;
+  font-size: 1.4rem;
   color: var(--white);
+}
+
+.account_span {
+  margin: 0 16px;
+  display: flex;
+  width: 70px;
+  height: 16px;
 }
 
 .sidebar_nav {
@@ -116,6 +142,7 @@ h2 {
 
 .sidebar_tab:hover {
   background-color: rgb(203, 203, 203);
+  cursor: pointer;
 }
 
 .tab_p {
@@ -175,6 +202,7 @@ h2 {
 
 .sidebar_button:hover {
   background-color: #ce7c00;
+  cursor: pointer;
 }
 
 .sidebar_button_p {
@@ -229,6 +257,7 @@ h2 {
 
   .sidebar_tab:hover {
     background-color: rgb(203, 203, 203);
+    cursor: pointer;
   }
   .sidebar_title {
     display: flex;
@@ -266,6 +295,7 @@ h2 {
 
   .sidebar_tab_quick:hover {
     background-color: rgb(203, 203, 203);
+    cursor: pointer;
   }
 
   .tab_quick_p {
@@ -333,6 +363,7 @@ h2 {
 
   .sidebar_tab:hover {
     background-color: rgb(203, 203, 203);
+    cursor: pointer;
   }
   .sidebar_title {
     display: flex;
@@ -369,6 +400,7 @@ h2 {
 
   .sidebar_tab_quick:hover {
     background-color: rgb(203, 203, 203);
+    cursor: pointer;
   }
 
   .tab_quick_p {
@@ -389,5 +421,12 @@ h2 {
     color: var(--red);
     padding-left: 8px;
     font-size: 80%;
+  }
+
+  .account_p {
+    font-size: 1.2rem;
+  }
+  .account_span {
+    width: 30px;
   }
 }

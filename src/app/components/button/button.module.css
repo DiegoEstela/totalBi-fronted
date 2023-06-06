@@ -1,0 +1,56 @@
+.ButtonComponent {
+  background: var(--primary);
+  width: 40%;
+  height: 100px;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
+  padding: 8px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.ButtonComponent:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-trasnform: scale(1.1);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* tablet */
+
+@media (max-width: 850px) {
+  .ButtonComponent {
+    background: var(--primary);
+    width: 80%;
+    height: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Roboto", sans-serif;
+    padding: 8px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+  }
+}
+
+/* mobile */
+
+@media (max-width: 500px) {
+  .ButtonComponent {
+    background: var(--primary);
+    width: 80%;
+    min-width: 200px;
+    height: 10%;
+    color: #fff;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    padding: 8px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+  }
+}
