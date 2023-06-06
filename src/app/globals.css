@@ -1,0 +1,33 @@
+:root {
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --primary: #5690f2;
+  --secondary: #ff9900;
+  --text: #333333;
+  --button: #c6d9ff;
+  --white: #f6f1f1;
+  --black: 0, 0, 0;
+  --green: #439775;
+  --red: #732c2c;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 100svw;
+  height: 100svh;
+}
+
+.mainContainer {
+  display: flex;
+  width: 100%;
+}
