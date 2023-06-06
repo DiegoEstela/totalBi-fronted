@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.formComponent {
+  margin: auto;
+  width: 90%;
+  max-width: 400px;
+  padding: 4.5rem 3em;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px -5px rgb(0 0 0 /30%);
+  text-align: center;
+}
+
+.form_title {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+.form_container {
+  margin-top: 3em;
+  display: grid;
+  gap: 2.5em;
+}
+
+.form_group {
+  position: relative;
+  --color: #5757577e;
+}
+
+.form_input {
+  width: 100%;
+  background: none;
+  color: #5c6b73;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--color);
+  font-family: "Roboto", sans-serif;
+}
+
+.form_input:focus + .form_label,
+.form_input:not(:placeholder-shown) + .form_label {
+  transform: translateY(-12px) scale(0.7);
+  transform-origin: left top;
+  color: var(--primary);
+  font-size: 1.4rem;
+}
+
+.form_label {
+  color: var(--color);
+  cursor: pointer;
+  position: absolute;
+  font-size: 1.1em;
+  top: -12px;
+  left: 5px;
+  transform: translateY(10px);
+  transition: transform 0.5s, color 0.3s;
+}
+
+.form_submit {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  padding: 8px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.form_submit:hover {
+  cursor: pointer;
+}
+
+.form_line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--primary);
+  transform: scale(0);
+  transform: left bottom;
+  transition: transform 0.4s;
+}
+
+.form_input:focus ~ .form_line,
+.form_input:not(:placeholder-shown) ~ .form_line {
+  transform: scale(1);
+}
+
+.warning {
+  margin: 0;
+  padding: 0;
+  color: red;
+}
+
+@media (max-width: 425px) {
+  .form_title {
+    font-size: 1.8rem;
+  }
+  .formComponent {
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    padding: 1rem 1em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px -5px rgb(0 0 0 /30%);
+    text-align: center;
+  }
+}
