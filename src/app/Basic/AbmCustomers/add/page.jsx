@@ -110,9 +110,8 @@ function AddCustomers() {
               <input
                 className="form_input_customer"
                 type="date"
-                {...register("fecha_nacimiento", {
-                  required: true,
-                })}
+                {...register("fecha_nacimiento")}
+                placeholder=" "
               />
               <label className="form_label_customer">Nacimiento</label>
             </div>

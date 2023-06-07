@@ -6,9 +6,10 @@ import {
   BiCalendarPlus,
   BiCalendarMinus,
   BiWindowClose,
+  BiAbacus,
 } from "react-icons/bi";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { TbAdjustmentsOff } from "react-icons/tb";
+import { BiMenuAltRight } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import { auth } from "@/db/db";
 import { useContext, useState } from "react";
@@ -41,10 +42,10 @@ export default function Sidebar({ isOpen, setSidebarOpen, setModule }) {
       <div className={`sidebar${isOpen ? "_open" : "_close"}`}>
         <div className={`sidebar_container${isOpen ? "_open" : "_close"}`}>
           <header className="sidebar_header">
-            <h1 className="sidebar_title">TotalBi</h1>
-            <TbAdjustmentsOff
+            <h1 className="sidebar_title">Total Biz</h1>
+            <BiMenuAltRight
               color="white"
-              size="34px"
+              size="40px"
               onClick={() => setSidebarOpen(!isOpen)}
             />
           </header>
@@ -100,6 +101,13 @@ export default function Sidebar({ isOpen, setSidebarOpen, setModule }) {
             >
               <BiBulb color="#ce7c00" size="32px" />
               <p className="tab_p">SERVICIOS</p>
+            </li>
+            <li
+              className="sidebar_tab"
+              onClick={() => habldeRoute("Resume", "Resumen")}
+            >
+              <BiAbacus color="#ce7c00" size="32px" />
+              <p className="tab_p">RESUMEN</p>
             </li>
           </ul>
           <span className="sidebar_line" />
