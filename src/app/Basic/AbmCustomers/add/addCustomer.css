@@ -52,10 +52,13 @@
 
 .form_input_customer:focus + .form_label_customer,
 .form_input_customer:not(:placeholder-shown) + .form_label_customer {
-  transform: translateY(-38px) scale(0.7);
+  transform: translateY(-25px) scale(0.7);
   transform-origin: top;
-  color: var(--primary);
-  font-size: 1.4rem;
+  color: black;
+  padding: 0 16px;
+  font-size: 1.5rem;
+  background-color: var(--white);
+  transition: 0.3s ease-out;
 }
 
 .form_submit_customer {
@@ -95,15 +98,6 @@
     padding: 1rem 1.5em;
     text-align: center;
   }
-  .formComponent {
-    margin: auto;
-    width: 90%;
-    max-width: 400px;
-    padding: 1rem 1em;
-    border-radius: 10px;
-
-    text-align: center;
-  }
   .form_group_customer {
     border: 1px solid black;
     display: flex;
@@ -132,14 +126,29 @@
   .form_input_customer:not(:placeholder-shown) + .form_label_customer {
     transform: translateY(-22px) scale(0.7);
     transform-origin: top;
-    color: var(--primary);
-    font-size: 1.4rem;
+    color: black;
+    padding: 0 16px;
+    font-size: 1.5rem;
+    background-color: var(--white);
+    transition: 0.3s ease-out;
+  }
+}
+@media (max-width: 350px) {
+  .form_input_customer:focus + .form_label_customer,
+  .form_input_customer:not(:placeholder-shown) + .form_label_customer {
+    transform: translateY(-15px) scale(0.7);
+    transform-origin: top;
+    color: black;
+    padding: 0 16px;
+    font-size: 1.5rem;
+    background-color: var(--white);
+    transition: 0.3s ease-out;
   }
 }
 
 /* Tablet */
 
-@media (max-width: 850px) {
+@media (min-width: 850px) {
   .form_submit_customer {
     background: var(--primary);
     color: #fff;
@@ -154,9 +163,12 @@
   }
   .form_input_customer:focus + .form_label_customer,
   .form_input_customer:not(:placeholder-shown) + .form_label_customer {
-    transform: translateY(-29px) scale(0.7);
+    transform: translateY(-25px) scale(0.7);
     transform-origin: top;
-    color: var(--primary);
-    font-size: 1.4rem;
+    color: black;
+    padding: 0 16px;
+    font-size: 1.5rem;
+    background-color: var(--white);
+    transition: 0.3s ease-out;
   }
 }
