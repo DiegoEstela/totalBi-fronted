@@ -152,4 +152,11 @@
     border: none;
     border-radius: 10px;
   }
+  .form_input_customer:focus + .form_label_customer,
+  .form_input_customer:not(:placeholder-shown) + .form_label_customer {
+    transform: translateY(-29px) scale(0.7);
+    transform-origin: top;
+    color: var(--primary);
+    font-size: 1.4rem;
+  }
 }
