@@ -1,18 +1,20 @@
 "use client";
 import React from "react";
-import { Blocks } from "react-loader-spinner";
+import { Puff } from "react-loader-spinner";
 import "./FullLoader.css";
 
 function FullLoader() {
   return (
     <div className="loaderComponent">
-      <Blocks
-        visible={true}
-        height="150"
-        width="150"
-        ariaLabel="blocks-loading"
+      <Puff
+        height="80"
+        width="80"
+        radius={1}
+        color="#4fa94d"
+        ariaLabel="puff-loading"
         wrapperStyle={{}}
-        wrapperClass="blocks-wrapper"
+        wrapperClass=""
+        visible={true}
       />
     </div>
   );

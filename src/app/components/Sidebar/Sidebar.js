@@ -17,7 +17,7 @@ import { getUserData } from "@/api/user/getUserData";
 import { useQuery } from "react-query";
 
 export default function Sidebar({ isOpen, setSidebarOpen, setModule }) {
-  const [showBox, setShowBox] = useState(false);
+  const [showBox, setShowBox] = useState(true);
   const router = useRouter();
   const { user } = useContext(AuthContext);
   const { data: userData, isSuccess } = useQuery(["userData", user?.uid], () =>
@@ -44,7 +44,7 @@ export default function Sidebar({ isOpen, setSidebarOpen, setModule }) {
             <h1 className="sidebar_title">TotalBi</h1>
             <TbAdjustmentsOff
               color="white"
-              size="40px"
+              size="34px"
               onClick={() => setSidebarOpen(!isOpen)}
             />
           </header>

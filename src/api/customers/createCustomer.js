@@ -1,7 +1,7 @@
 import axios from "axios";
 import { customersUrl } from "../endpoints";
 
-export async function CreateCostumer(costumer, userId) {
+export async function CreateCustomer(costumer, userId) {
   const { nombre, apellido, fecha_nacimiento, telefono } = costumer;
   try {
     const headers = {

@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
         <Header
           isOpen={isSidebarOpen}
           setSidebarOpen={setSidebarOpen}
+          setModule={setModule}
           module={module}
         />
         <main className="mainContainer">

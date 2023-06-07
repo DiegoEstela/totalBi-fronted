@@ -1,8 +1,14 @@
+"use client";
 import styles from "./button.module.css";
+import { useRouter } from "next/navigation";
 
-function ButtonComponent({ text, onClick }) {
+function ButtonComponent({ text, path }) {
+  const router = useRouter();
   return (
-    <button className={styles.ButtonComponent} onClick={onClick}>
+    <button
+      className={styles.ButtonComponent}
+      onClick={() => router.push(path)}
+    >
       {text}
     </button>
   );
