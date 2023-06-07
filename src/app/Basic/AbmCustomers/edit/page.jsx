@@ -47,7 +47,6 @@ function AddCustomers() {
       (customer) => customer.idcliente === parseInt(id)
     );
 
-    console.log(dataFinded);
     setClientId(id);
     setValue("nombre", dataFinded?.nombre);
     setValue("apellido", dataFinded?.apellido);

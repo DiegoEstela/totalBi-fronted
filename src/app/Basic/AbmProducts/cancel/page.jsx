@@ -5,14 +5,14 @@ import { useForm } from "react-hook-form";
 import "./cancel.css";
 import Swal from "sweetalert2";
 import Loader from "@/app/components/Loader/Loader";
-import { getAllCustomers } from "@/api/customers/getAllCustomers";
 import { useQuery } from "react-query";
-import { CancelCustomerFunction } from "@/api/customers/cancelCustomer";
+import { CancelProductFunction } from "@/api/products/cancelProduct";
+import { getAllProducts } from "@/api/products/getAllProduts";
 
-function CancelCustomer() {
-  const [ClientId, setClientId] = useState();
+function CancelProduct() {
+  const [prodId, setProdId] = useState();
   const [loader, setLoader] = useState(false);
-  const { data: customers, status } = useQuery("customers", getAllCustomers);
+  const { data: products, status } = useQuery("products", getAllProducts);
   const router = useRouter();
   const {
     formState: { errors },
@@ -25,7 +25,7 @@ function CancelCustomer() {
     setLoader(true);
     Swal.fire({
       title: "¿Estás seguro?",
-      text: "¿Deseas dar de baja a este cliente?",
+      text: "¿Deseas dar de baja a este producto?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Sí, dar de baja",
@@ -33,8 +33,8 @@ function CancelCustomer() {
     }).then((result) => {
       if (result.isConfirmed) {
         setLoader(false);
-        CancelCustomerFunction(ClientId);
-        Swal.fire("¡Cliente dado de baja!", "", "success");
+        CancelProductFunction(prodId);
+        Swal.fire("¡producto dado de baja!", "", "success");
         router.push("/");
       } else {
         setLoader(false);
@@ -45,15 +45,14 @@ function CancelCustomer() {
   };
 
   const handleValue = (id) => {
-    const dataFinded = customers?.data.find(
-      (customer) => customer.idcliente === parseInt(id)
+    const dataFinded = products?.data.find(
+      (customer) => customer.idproducto === parseInt(id)
     );
 
-    setClientId(id);
-    setValue("nombre", dataFinded?.nombre);
-    setValue("apellido", dataFinded?.apellido);
-    setValue("telefono", dataFinded?.telefono);
-    setValue("fecha_nacimiento", dataFinded?.fecha_nacimiento);
+    console.log(products);
+    setProdId(id);
+    setValue("concepto", dataFinded?.concepto);
+    setValue("monto", dataFinded?.monto);
   };
 
   return (
@@ -69,49 +68,28 @@ function CancelCustomer() {
                 placeholder=" "
               >
                 <option>Seleccionar</option>
-                {customers?.data.map((customer) => (
+                {products?.data.map((product) => (
                   <option
-                    key={customer.idcliente}
-                    value={`${customer.idcliente}`}
+                    key={product.idproducto}
+                    value={`${product.idproducto}`}
                   >
-                    {customer.apellido} {customer.nombre}
+                    {product.concepto}
                   </option>
                 ))}
               </select>
             </div>
-            {errors.nombre?.type === "required" && (
-              <p className="warning_customer">El nombre es requerido</p>
-            )}
           </div>
           <div className="input_customer">
             <div className="form_group_customer">
-              <div className="form_input_customer">{watch("nombre")}</div>
-
-              <label className="form_label_customer">Nombre</label>
+              <div className="form_input_customer">{watch("concepto")}</div>
+              <label className="form_label_customer">Producto</label>
             </div>
           </div>
           <div className="input_customer">
             <div className="form_group_customer">
-              <div className="form_input_customer">{watch("apellido")}</div>
-              <label className="form_label_customer">Apellido</label>
+              <div className="form_input_customer">{watch("monto")}</div>
+              <label className="form_label_customer">Monto</label>
               <span className="form_line"></span>
-            </div>
-          </div>
-          <div className="input_customer">
-            <div className="form_group_customer">
-              <div className="form_input_customer">{watch("telefono")}</div>
-              <label className="form_label_customer">Telefono</label>
-            </div>
-            {errors.telefono?.type === "minLength" && (
-              <p className="warning">el numero debe comenzar en 11</p>
-            )}
-          </div>
-          <div className="input_customer">
-            <div className="form_group_customer">
-              <div className="form_input_customer">
-                {watch("fecha_nacimiento")}
-              </div>
-              <label className="form_label_customer">Nacimiento</label>
             </div>
           </div>
           {loader ? (
@@ -129,4 +107,4 @@ function CancelCustomer() {
   );
 }
 
-export default CancelCustomer;
+export default CancelProduct;
