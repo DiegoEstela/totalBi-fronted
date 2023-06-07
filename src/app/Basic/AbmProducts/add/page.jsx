@@ -10,7 +10,7 @@ import { BiPackage, BiMoney } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import { CreateProduct } from "@/api/products/createProduct";
 
-function addProducts() {
+function AddProducts() {
   const [loader, setLoader] = useState(false);
   const { user } = useContext(AuthContext);
   const router = useRouter();
@@ -91,4 +91,4 @@ function addProducts() {
   );
 }
 
-export default addProducts;
+export default AddProducts;

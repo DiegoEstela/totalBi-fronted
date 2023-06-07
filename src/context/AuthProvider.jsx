@@ -26,7 +26,6 @@ const AuthProvider = ({ children }) => {
 
   return (
     <>
-      :
       <AuthContext.Provider value={{ user }}>
         {loading ? <FullLoader /> : user ? <>{children} </> : <Login />}
       </AuthContext.Provider>

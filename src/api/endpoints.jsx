@@ -7,3 +7,4 @@ export const productsUrl = `${NODE_SERVER}/products`;
 export const cancelProductsUrl = `${NODE_SERVER}/cancelproducts`;
 export const revenuesUrl = `${NODE_SERVER}/revenues`;
 export const expensesUrl = `${NODE_SERVER}/expenses`;
+export const accountByDateUrl = `${NODE_SERVER}/accountsByDate`;

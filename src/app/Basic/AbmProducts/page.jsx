@@ -1,6 +1,6 @@
 import ButtonComponent from "@/app/components/button/button";
 import "./page.css";
-function abmProducts() {
+function AbmProducts() {
   return (
     <div className="container">
       <ButtonComponent text="Nuevo producto" path="/Basic/AbmProducts/add" />
@@ -12,4 +12,4 @@ function abmProducts() {
   );
 }
 
-export default abmProducts;
+export default AbmProducts;
