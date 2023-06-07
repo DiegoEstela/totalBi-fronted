@@ -5,7 +5,10 @@ function AbmCustomers() {
     <div className="container">
       <ButtonComponent text="Nuevo Cliente" path="/Basic/AbmCustomers/add" />
       <ButtonComponent text="Editar Cliente" path="/Basic/AbmCustomers/edit" />
-      <ButtonComponent text="Eliminar Cliente" />
+      <ButtonComponent
+        text="Eliminar Cliente"
+        path="/Basic/AbmCustomers/cancel"
+      />
     </div>
   );
 }
