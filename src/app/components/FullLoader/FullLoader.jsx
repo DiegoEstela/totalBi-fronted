@@ -5,12 +5,12 @@ import "./FullLoader.css";
 
 function FullLoader() {
   return (
-    <div className="loaderComponent">
+    <div className="FullLoaderComponent">
       <Puff
         height="80"
         width="80"
         radius={1}
-        color="#4fa94d"
+        color="#5690f2"
         ariaLabel="puff-loading"
         wrapperStyle={{}}
         wrapperClass=""

@@ -1,33 +1,33 @@
 "use client";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import "./addCustomer.css";
 import Swal from "sweetalert2";
 import Loader from "@/app/components/Loader/Loader";
-import { getUserData } from "@/api/user/getUserData";
-import { CreateCustomer } from "@/api/customers/createCustomer";
-import { AuthContext } from "@/context/AuthProvider";
+import { getAllCustomers } from "@/api/customers/getAllCustomers";
+import { EditCustomer } from "@/api/customers/editCustumers";
 import {
   AiOutlineUser,
   AiOutlinePhone,
   AiOutlineCalendar,
 } from "react-icons/ai";
-import { useRouter } from "next/navigation";
+import { useQuery } from "react-query";
 
 function AddCustomers() {
+  const [ClientId, setClientId] = useState();
   const [loader, setLoader] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { data: customers, status } = useQuery("customers", getAllCustomers);
   const router = useRouter();
   const {
     register,
     formState: { errors },
     handleSubmit,
+    setValue,
   } = useForm();
-
   const onSubmit = async (data) => {
     setLoader(true);
-    const userData = await getUserData(user?.uid);
-    const result = await CreateCustomer(data, userData?.userId);
+    const result = await EditCustomer(data, ClientId);
     if (result) {
       setLoader(false);
       const creacionOk = await Swal.fire(
@@ -41,10 +41,47 @@ function AddCustomers() {
       await Swal.fire("Creacion Fallida", "Error al crear el usuario", "error");
     }
   };
+
+  const handleValue = (id) => {
+    const dataFinded = customers?.data.find(
+      (customer) => customer.idcliente === parseInt(id)
+    );
+
+    console.log(dataFinded);
+    setClientId(id);
+    setValue("nombre", dataFinded?.nombre);
+    setValue("apellido", dataFinded?.apellido);
+    setValue("telefono", dataFinded?.telefono);
+    setValue("fecha_nacimiento", dataFinded?.fecha_nacimiento);
+  };
+
   return (
     <div className="container_customer">
       <form className="formComponent_customer">
+        {status === "error" && <div>Error al obtener los clientes</div>}
         <div className="form_container_customer">
+          <div className="input_customer_select">
+            <div className="form_group_customer_select">
+              <select
+                className="form_input_customer_select"
+                onChange={(e) => handleValue(e.target.value)}
+                placeholder=" "
+              >
+                <option>Seleccionar</option>
+                {customers?.data.map((customer) => (
+                  <option
+                    key={customer.idcliente}
+                    value={`${customer.idcliente}`}
+                  >
+                    {customer.apellido} {customer.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {errors.nombre?.type === "required" && (
+              <p className="warning_customer">El nombre es requerido</p>
+            )}
+          </div>
           <div className="input_customer">
             <div className="form_group_customer">
               <AiOutlineUser color="#5c6b73" size="24" />
@@ -128,7 +165,7 @@ function AddCustomers() {
             <input
               className="form_submit_customer"
               onClick={handleSubmit(onSubmit)}
-              value="Crear"
+              value="Editar"
             />
           )}
         </div>
