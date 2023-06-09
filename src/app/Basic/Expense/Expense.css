@@ -1,4 +1,4 @@
-.container_revenue {
+.container_customer {
   display: flex;
   flex-direction: column;
   height: 80vh;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.formComponent_revenue {
+.formComponent_customer {
   margin: auto;
   width: 100%;
   max-width: 400px;
@@ -15,12 +15,12 @@
   text-align: center;
 }
 
-.form_container_revenue {
+.form_container_customer {
   display: grid;
   gap: 1.5em;
 }
 
-.form_group_revenue {
+.form_group_customer {
   border: 1px solid black;
   display: flex;
   justify-content: center;
@@ -32,12 +32,12 @@
   --color: #5757577e;
 }
 
-.form_group_revenue_select {
+.form_group_customer_select {
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--primary);
+  background-color: var(--primary);
   width: 100%;
   padding: 0 20%;
   height: 6vh;
@@ -45,7 +45,7 @@
   color: var(--white);
 }
 
-.form_input_revenue {
+.form_input_customer {
   width: 100%;
   background: none;
   color: #5c6b73;
@@ -56,7 +56,7 @@
   font-family: "Roboto", sans-serif;
 }
 
-.form_input_revenue_select {
+.form_input_customer_select {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -65,22 +65,19 @@
   border: none;
   outline: none;
   font-family: "Roboto", sans-serif;
-  color: var(--primary);
+  color: var(--white);
+  background-color: var(--primary);
 }
 
-.form_input_revenue_select:hover {
-  cursor: pointer;
-}
-
-.form_label_revenue {
+.form_label_customer {
   color: var(--color);
   cursor: pointer;
   position: absolute;
   font-size: 1.1em;
 }
 
-.form_input_revenue:focus + .form_label_revenue,
-.form_input_revenue:not(:placeholder-shown) + .form_label_revenue {
+.form_input_customer:focus + .form_label_customer,
+.form_input_customer:not(:placeholder-shown) + .form_label_customer {
   transform: translateY(-25px) scale(0.7);
   transform-origin: top;
   color: black;
@@ -90,7 +87,7 @@
   transition: 0.3s ease-out;
 }
 
-.form_submit_revenue {
+.form_submit_customer {
   background: var(--primary);
   color: #fff;
   text-align: center;
@@ -107,19 +104,19 @@
   cursor: pointer;
 }
 
-.warning_revenue {
+.warning_customer {
   margin-top: 4px;
   padding: 0;
   color: red;
 }
 
 @media (max-width: 500px) {
-  .form_container_revenue {
+  .form_container_customer {
     display: grid;
     gap: 1.4em;
   }
 
-  .formComponent_revenue {
+  .formComponent_customer {
     margin: auto;
     width: 100%;
     max-width: 400px;
@@ -127,7 +124,7 @@
     padding: 1rem 1.5em;
     text-align: center;
   }
-  .form_group_revenue {
+  .form_group_customer {
     border: 1px solid black;
     display: flex;
     justify-content: center;
@@ -137,7 +134,7 @@
     border-radius: 5px;
     --color: #5757577e;
   }
-  .form_group_revenue_select {
+  .form_group_customer_select {
     border: none;
     display: flex;
     justify-content: center;
@@ -148,8 +145,8 @@
     --color: #5757577e;
   }
 
-  .form_input_revenue:focus + .form_label_revenue,
-  .form_input_revenue:not(:placeholder-shown) + .form_label_revenue {
+  .form_input_customer:focus + .form_label_customer,
+  .form_input_customer:not(:placeholder-shown) + .form_label_customer {
     transform: translateY(-22px) scale(0.7);
     transform-origin: top;
     color: black;
@@ -160,8 +157,8 @@
   }
 }
 @media (max-width: 350px) {
-  .form_input_revenue:focus + .form_label_revenue,
-  .form_input_revenue:not(:placeholder-shown) + .form_label_revenue {
+  .form_input_customer:focus + .form_label_customer,
+  .form_input_customer:not(:placeholder-shown) + .form_label_customer {
     transform: translateY(-15px) scale(0.7);
     transform-origin: top;
     color: black;
@@ -175,8 +172,8 @@
 /* Tablet */
 
 @media (max-width: 850px) {
-  .form_input_revenue:focus + .form_label_revenue,
-  .form_input_revenue:not(:placeholder-shown) + .form_label_revenue {
+  .form_input_customer:focus + .form_label_customer,
+  .form_input_customer:not(:placeholder-shown) + .form_label_customer {
     transform: translateY(-25px) scale(0.7);
     transform-origin: top;
     color: black;

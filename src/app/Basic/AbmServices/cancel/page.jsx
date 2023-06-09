@@ -6,31 +6,30 @@ import "./cancel.css";
 import Swal from "sweetalert2";
 import Loader from "@/app/components/Loader/Loader";
 import { useQuery } from "react-query";
-import { CancelProductFunction } from "@/api/products/cancelProduct";
-import { getAllProducts } from "@/api/products/getAllProduts";
+import { CancelServiceFunction } from "@/api/services/cancelService";
+import { getAllServices } from "@/api/services/getAllServices";
 import { getUserData } from "@/api/user/getUserData";
+import { AuthContext } from "@/context/AuthProvider";
 
 function CancelProduct() {
-  const [prodId, setProdId] = useState();
+  const [serviceId, setServiceId] = useState();
   const [loader, setLoader] = useState(false);
   const { user } = useContext(AuthContext);
   const userData = getUserData(user?.uid);
-  const { data: products, isLoading } = useQuery(["products", userData], () =>
-    getAllProducts(userData)
+  const { data: services, isLoading } = useQuery(["services", userData], () =>
+    getAllServices(userData)
   );
   const router = useRouter();
   const {
     formState: { errors },
     handleSubmit,
-    setValue,
-    watch,
   } = useForm();
 
   const onSubmit = async (data) => {
     setLoader(true);
     Swal.fire({
       title: "¿Estás seguro?",
-      text: "¿Deseas dar de baja a este producto?",
+      text: "¿Deseas dar de baja a este servicio?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Sí, dar de baja",
@@ -38,8 +37,8 @@ function CancelProduct() {
     }).then((result) => {
       if (result.isConfirmed) {
         setLoader(false);
-        CancelProductFunction(prodId);
-        Swal.fire("¡producto dado de baja!", "", "success");
+        CancelServiceFunction(serviceId);
+        Swal.fire("servicio dado de baja!", "", "success");
         router.push("/");
       } else {
         setLoader(false);
@@ -47,17 +46,6 @@ function CancelProduct() {
         router.push("/");
       }
     });
-  };
-
-  const handleValue = (id) => {
-    const dataFinded = products?.data.find(
-      (customer) => customer.idproducto === parseInt(id)
-    );
-
-    console.log(products);
-    setProdId(id);
-    setValue("concepto", dataFinded?.concepto);
-    setValue("monto", dataFinded?.monto);
   };
 
   return (
@@ -69,34 +57,22 @@ function CancelProduct() {
             <div className="form_group_customer_select">
               <select
                 className="form_input_customer_select"
-                onChange={(e) => handleValue(e.target.value)}
+                onChange={(e) => setServiceId(e.target.value)}
                 placeholder=" "
               >
                 <option>Seleccionar</option>
-                {products?.data.map((product) => (
+                {services?.map((service) => (
                   <option
-                    key={product.idproducto}
-                    value={`${product.idproducto}`}
+                    key={service.idservicio}
+                    value={`${service.idservicio}`}
                   >
-                    {product.concepto}
+                    {service.concepto}
                   </option>
                 ))}
               </select>
             </div>
           </div>
-          <div className="input_customer">
-            <div className="form_group_customer">
-              <div className="form_input_customer">{watch("concepto")}</div>
-              <label className="form_label_customer">Producto</label>
-            </div>
-          </div>
-          <div className="input_customer">
-            <div className="form_group_customer">
-              <div className="form_input_customer">{watch("monto")}</div>
-              <label className="form_label_customer">Monto</label>
-              <span className="form_line"></span>
-            </div>
-          </div>
+
           {loader ? (
             <Loader />
           ) : (

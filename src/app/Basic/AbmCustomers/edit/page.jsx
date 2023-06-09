@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import "./addCustomer.css";
@@ -13,11 +13,17 @@ import {
   AiOutlineCalendar,
 } from "react-icons/ai";
 import { useQuery } from "react-query";
+import { AuthContext } from "@/context/AuthProvider";
+import { getUserData } from "@/api/user/getUserData";
 
 function AddCustomers() {
   const [ClientId, setClientId] = useState();
   const [loader, setLoader] = useState(false);
-  const { data: customers, status } = useQuery("customers", getAllCustomers);
+  const { user } = useContext(AuthContext);
+  const userData = getUserData(user?.uid);
+  const { data: customers, status } = useQuery(["customers", userData], () =>
+    getAllCustomers(userData)
+  );
   const router = useRouter();
   const {
     register,

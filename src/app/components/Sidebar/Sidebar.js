@@ -97,7 +97,7 @@ export default function Sidebar({ isOpen, setSidebarOpen, setModule }) {
             </li>
             <li
               className="sidebar_tab"
-              onClick={() => habldeRoute("AbmServices", "Services")}
+              onClick={() => habldeRoute("AbmServices", "Servicios")}
             >
               <BiBulb color="#ce7c00" size="32px" />
               <p className="tab_p">SERVICIOS</p>

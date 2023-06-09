@@ -7,11 +7,11 @@ import { getAllCustomers } from "@/api/customers/getAllCustomers";
 import { getAllProducts } from "@/api/products/getAllProduts";
 import Loader from "@/app/components/Loader/Loader";
 import Swal from "sweetalert2";
-import { AiOutlineUser } from "react-icons/ai";
 import "./revenue.css";
 import { createRevenue } from "@/api/revenue/createRevenue";
 import { AuthContext } from "@/context/AuthProvider";
 import { getUserData } from "@/api/user/getUserData";
+import { BiMoney } from "react-icons/bi";
 
 function Revenue() {
   const [loader, setLoader] = useState(false);
@@ -56,14 +56,14 @@ function Revenue() {
   };
 
   return (
-    <div className="container_customer">
-      <form className="formComponent_customer">
+    <div className="container_revenue">
+      <form className="formComponent_revenue">
         {status === "error" && <div>Error al obtener los clientes</div>}
-        <div className="form_container_customer">
-          <div className="input_customer_select">
-            <div className="form_group_customer_select">
+        <div className="form_container_revenue">
+          <div className="input_revenue_select">
+            <div className="form_group_revenue_select">
               <select
-                className="form_input_customer_select"
+                className="form_input_revenue_select"
                 {...register("idCliente")}
                 placeholder=" "
               >
@@ -79,9 +79,9 @@ function Revenue() {
               </select>
             </div>
           </div>
-          <div className="form_group_customer_select">
+          <div className="form_group_revenue_select">
             <select
-              className="form_input_customer_select"
+              className="form_input_revenue_select"
               onChange={(e) => handleSelectChange(parseInt(e.target.value))}
             >
               <option> Producto</option>
@@ -95,9 +95,9 @@ function Revenue() {
               ))}
             </select>
           </div>
-          <div className="form_group_customer_select">
+          <div className="form_group_revenue_select">
             <select
-              className="form_input_customer_select"
+              className="form_input_revenue_select"
               placeholder=" "
               {...register("metodoPago")}
             >
@@ -107,26 +107,26 @@ function Revenue() {
               <option> Banco</option>
             </select>
           </div>
-          <div className="form_group_customer">
-            <AiOutlineUser color="#5c6b73" size="24" />
+          <div className="form_group_revenue">
+            <BiMoney color="#5c6b73" size="24" />
             <input
-              className="form_input_customer"
+              className="form_input_revenue"
               type="number"
               {...register("monto", {
                 required: true,
               })}
               placeholder=" "
             />
-            <label className="form_label_customer">Monto</label>
+            <label className="form_label_revenue">Monto</label>
             {errors.monto?.type === "required" && (
-              <p className="warning_customer">Elija un producto para guardar</p>
+              <p className="warning_revenue">Elija un producto para guardar</p>
             )}
           </div>
           {loader | isLoading ? (
             <Loader />
           ) : (
             <input
-              className="form_submit_customer"
+              className="form_submit_revenue"
               onClick={handleSubmit(onSubmit)}
               value="Agregar"
             />
