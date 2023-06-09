@@ -102,13 +102,6 @@ export default function Sidebar({ isOpen, setSidebarOpen, setModule }) {
               <BiBulb color="#ce7c00" size="32px" />
               <p className="tab_p">SERVICIOS</p>
             </li>
-            <li
-              className="sidebar_tab"
-              onClick={() => habldeRoute("Resume", "Resumen")}
-            >
-              <BiAbacus color="#ce7c00" size="32px" />
-              <p className="tab_p">RESUMEN</p>
-            </li>
           </ul>
           <span className="sidebar_line" />
           <ul className="sidebar_nav_quick">
@@ -125,6 +118,15 @@ export default function Sidebar({ isOpen, setSidebarOpen, setModule }) {
             </li>
           </ul>
           <span className="sidebar_line" />
+          <ul className="sidebar_nav">
+            <li
+              className="sidebar_tab"
+              onClick={() => habldeRoute("Resume", "Resumen")}
+            >
+              <BiAbacus color="#ce7c00" size="32px" />
+              <p className="tab_p">RESUMEN</p>
+            </li>
+          </ul>
           <button className="sidebar_button" onClick={handleLogout}>
             <BiWindowClose color="#5690f2" size="32px" />
             <p className="sidebar_button_p">CERRAR SESION</p>
