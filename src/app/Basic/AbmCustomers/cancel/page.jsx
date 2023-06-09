@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import "./cancel.css";
@@ -8,11 +8,17 @@ import Loader from "@/app/components/Loader/Loader";
 import { getAllCustomers } from "@/api/customers/getAllCustomers";
 import { useQuery } from "react-query";
 import { CancelCustomerFunction } from "@/api/customers/cancelCustomer";
+import { AuthContext } from "@/context/AuthProvider";
+import { getUserData } from "@/api/user/getUserData";
 
 function CancelCustomer() {
   const [ClientId, setClientId] = useState();
   const [loader, setLoader] = useState(false);
-  const { data: customers, status } = useQuery("customers", getAllCustomers);
+  const { user } = useContext(AuthContext);
+  const userData = getUserData(user?.uid);
+  const { data: customers, status } = useQuery(["customers", userData], () =>
+    getAllCustomers(userData)
+  );
   const router = useRouter();
   const {
     formState: { errors },
@@ -45,7 +51,7 @@ function CancelCustomer() {
   };
 
   const handleValue = (id) => {
-    const dataFinded = customers?.data.find(
+    const dataFinded = customers?.find(
       (customer) => customer.idcliente === parseInt(id)
     );
 
@@ -69,7 +75,7 @@ function CancelCustomer() {
                 placeholder=" "
               >
                 <option>Seleccionar</option>
-                {customers?.data.map((customer) => (
+                {customers?.map((customer) => (
                   <option
                     key={customer.idcliente}
                     value={`${customer.idcliente}`}
