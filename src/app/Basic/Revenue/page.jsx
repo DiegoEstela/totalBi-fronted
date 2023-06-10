@@ -108,7 +108,7 @@ function Revenue() {
             </select>
           </div>
           <div className="form_group_revenue">
-            <BiMoney color="#5c6b73" size="24" />
+            <BiMoney color="#5690f2" size="24" />
             <input
               className="form_input_revenue"
               type="number"

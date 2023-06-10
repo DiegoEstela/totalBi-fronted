@@ -67,28 +67,30 @@ function CancelCustomer() {
       <form className="formComponent_customer">
         {status === "error" && <div>Error al obtener los clientes</div>}
         <div className="form_container_customer">
-          <div className="input_customer_select">
-            <div className="form_group_customer_select">
-              <select
-                className="form_input_customer_select"
-                onChange={(e) => handleValue(e.target.value)}
-                placeholder=" "
-              >
-                <option>Seleccionar</option>
-                {customers?.map((customer) => (
-                  <option
-                    key={customer.idcliente}
-                    value={`${customer.idcliente}`}
-                  >
-                    {customer.apellido} {customer.nombre}
-                  </option>
-                ))}
-              </select>
+          {status === "loading" ? (
+            <Loader />
+          ) : (
+            <div className="input_customer_select">
+              <div className="form_group_customer_select">
+                <select
+                  className="form_input_customer_select"
+                  onChange={(e) => handleValue(e.target.value)}
+                  placeholder=" "
+                >
+                  <option>Seleccionar</option>
+                  {customers?.map((customer) => (
+                    <option
+                      key={customer.idcliente}
+                      value={`${customer.idcliente}`}
+                    >
+                      {customer.apellido} {customer.nombre}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-            {errors.nombre?.type === "required" && (
-              <p className="warning_customer">El nombre es requerido</p>
-            )}
-          </div>
+          )}
+
           <div className="input_customer">
             <div className="form_group_customer">
               <div className="form_input_customer">{watch("nombre")}</div>

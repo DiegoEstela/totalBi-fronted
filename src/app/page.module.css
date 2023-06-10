@@ -19,6 +19,7 @@
 }
 
 .button {
+  max-width: 500px;
   background: var(--primary);
   width: 50%;
   height: 50px;

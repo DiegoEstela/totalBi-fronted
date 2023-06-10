@@ -51,8 +51,12 @@ function Resume() {
               {accounts.length ? (
                 accounts.map((account, key) => (
                   <div className="resume_tabs" key={key}>
-                    {" "}
-                    {account.monto} {account.metodopago}
+                    {account.monto < 0 ? (
+                      <span style={{ color: "red" }}>{account.monto}</span>
+                    ) : (
+                      <span style={{ color: "green" }}>{account.monto}</span>
+                    )}
+                    {account.metodopago} {account.nombreproducto}
                   </div>
                 ))
               ) : (

@@ -21,7 +21,7 @@ function AddCustomers() {
   const [loader, setLoader] = useState(false);
   const { user } = useContext(AuthContext);
   const userData = getUserData(user?.uid);
-  const { data: customers, status } = useQuery(["customers", userData], () =>
+  const { data: customers, isLoading } = useQuery(["customers", userData], () =>
     getAllCustomers(userData)
   );
   const router = useRouter();
@@ -49,7 +49,7 @@ function AddCustomers() {
   };
 
   const handleValue = (id) => {
-    const dataFinded = customers?.data.find(
+    const dataFinded = customers?.find(
       (customer) => customer.idcliente === parseInt(id)
     );
 
@@ -66,25 +66,26 @@ function AddCustomers() {
         {status === "error" && <div>Error al obtener los clientes</div>}
         <div className="form_container_customer">
           <div className="input_customer_select">
-            <div className="form_group_customer_select">
-              <select
-                className="form_input_customer_select"
-                onChange={(e) => handleValue(e.target.value)}
-                placeholder=" "
-              >
-                <option>Seleccionar</option>
-                {customers?.data.map((customer) => (
-                  <option
-                    key={customer.idcliente}
-                    value={`${customer.idcliente}`}
-                  >
-                    {customer.apellido} {customer.nombre}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {errors.nombre?.type === "required" && (
-              <p className="warning_customer">El nombre es requerido</p>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <div className="form_group_customer_select">
+                <select
+                  className="form_input_customer_select"
+                  onChange={(e) => handleValue(e.target.value)}
+                  placeholder=" "
+                >
+                  <option>Seleccionar</option>
+                  {customers?.map((customer) => (
+                    <option
+                      key={customer.idcliente}
+                      value={`${customer.idcliente}`}
+                    >
+                      {customer.apellido} {customer.nombre}
+                    </option>
+                  ))}
+                </select>
+              </div>
             )}
           </div>
           <div className="input_customer">
