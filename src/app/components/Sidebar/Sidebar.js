@@ -112,7 +112,10 @@ export default function Sidebar({ isOpen, setSidebarOpen, setModule }) {
               <BiCalendarPlus color="#439775" size="32px" />
               <p className="tab_quick_p_ing">INGRESO</p>
             </li>
-            <li className="sidebar_tab">
+            <li
+              className="sidebar_tab"
+              onClick={() => habldeRoute("Expense", "Egreso")}
+            >
               <BiCalendarMinus color="#732C2C" size="32px" />
               <p className="tab_quick_p_eg">EGRESO</p>
             </li>

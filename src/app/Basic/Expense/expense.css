@@ -1,4 +1,4 @@
-.container_customer {
+.container_revenue {
   display: flex;
   flex-direction: column;
   height: 80vh;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.formComponent_customer {
+.formComponent_revenue {
   margin: auto;
   width: 100%;
   max-width: 400px;
@@ -15,13 +15,13 @@
   text-align: center;
 }
 
-.form_container_customer {
+.form_container_revenue {
   display: grid;
   gap: 1.5em;
 }
 
-.form_group_customer {
-  border: 1px solid black;
+.form_group_revenue {
+  border: 1px solid var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,12 +32,12 @@
   --color: #5757577e;
 }
 
-.form_group_customer_select {
+.form_group_revenue_select {
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary);
+  border: 1px solid var(--primary);
   width: 100%;
   padding: 0 20%;
   height: 6vh;
@@ -45,7 +45,7 @@
   color: var(--white);
 }
 
-.form_input_customer {
+.form_input_revenue {
   width: 100%;
   background: none;
   color: #5c6b73;
@@ -56,38 +56,40 @@
   font-family: "Roboto", sans-serif;
 }
 
-.form_input_customer_select {
+.form_input_revenue_select {
   display: flex;
   justify-content: center;
   width: 100%;
-  color: #5c6b73;
   font-size: 1.2rem;
   border: none;
   outline: none;
   font-family: "Roboto", sans-serif;
-  color: var(--white);
-  background-color: var(--primary);
+  color: var(--primary);
 }
 
-.form_label_customer {
-  color: var(--color);
+.form_input_revenue_select:hover {
+  cursor: pointer;
+}
+
+.form_label_revenue {
+  color: var(--primary);
   cursor: pointer;
   position: absolute;
   font-size: 1.1em;
 }
 
-.form_input_customer:focus + .form_label_customer,
-.form_input_customer:not(:placeholder-shown) + .form_label_customer {
+.form_input_revenue:focus + .form_label_revenue,
+.form_input_revenue:not(:placeholder-shown) + .form_label_revenue {
   transform: translateY(-25px) scale(0.7);
   transform-origin: top;
-  color: black;
+  color: var(--primary);
   padding: 0 16px;
   font-size: 1.5rem;
   background-color: var(--white);
   transition: 0.3s ease-out;
 }
 
-.form_submit_customer {
+.form_submit_revenue {
   background: var(--primary);
   color: #fff;
   text-align: center;
@@ -104,19 +106,19 @@
   cursor: pointer;
 }
 
-.warning_customer {
+.warning_revenue {
   margin-top: 4px;
   padding: 0;
   color: red;
 }
 
 @media (max-width: 500px) {
-  .form_container_customer {
+  .form_container_revenue {
     display: grid;
     gap: 1.4em;
   }
 
-  .formComponent_customer {
+  .formComponent_revenue {
     margin: auto;
     width: 100%;
     max-width: 400px;
@@ -124,29 +126,42 @@
     padding: 1rem 1.5em;
     text-align: center;
   }
-  .form_group_customer {
-    border: 1px solid black;
+  .form_group_revenue {
+    border: 1px solid var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 8vh;
     border-radius: 5px;
-    --color: #5757577e;
+    color: var(--primary);
   }
-  .form_group_customer_select {
+  .form_group_revenue_select {
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid var(--primary);
     width: 100%;
+    padding: 0 20%;
     height: 8vh;
     border-radius: 5px;
-    --color: #5757577e;
+    color: var(--white);
   }
 
-  .form_input_customer:focus + .form_label_customer,
-  .form_input_customer:not(:placeholder-shown) + .form_label_customer {
+  .form_input_revenue_select {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    color: var(--primary);
+  }
+
+  .form_input_revenue:focus + .form_label_revenue,
+  .form_input_revenue:not(:placeholder-shown) + .form_label_revenue {
     transform: translateY(-22px) scale(0.7);
     transform-origin: top;
     color: black;
@@ -157,11 +172,11 @@
   }
 }
 @media (max-width: 350px) {
-  .form_input_customer:focus + .form_label_customer,
-  .form_input_customer:not(:placeholder-shown) + .form_label_customer {
+  .form_input_revenue:focus + .form_label_revenue,
+  .form_input_revenue:not(:placeholder-shown) + .form_label_revenue {
     transform: translateY(-15px) scale(0.7);
     transform-origin: top;
-    color: black;
+    color: var(--primary);
     padding: 0 16px;
     font-size: 1.5rem;
     background-color: var(--white);
@@ -172,8 +187,8 @@
 /* Tablet */
 
 @media (max-width: 850px) {
-  .form_input_customer:focus + .form_label_customer,
-  .form_input_customer:not(:placeholder-shown) + .form_label_customer {
+  .form_input_revenue:focus + .form_label_revenue,
+  .form_input_revenue:not(:placeholder-shown) + .form_label_revenue {
     transform: translateY(-25px) scale(0.7);
     transform-origin: top;
     color: black;

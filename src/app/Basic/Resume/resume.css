@@ -76,7 +76,8 @@
   height: 10vh;
   padding: 0 10%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  background-color: #dcdada;
 }
 
 .resume_footer_search {
@@ -89,4 +90,56 @@
   width: 40%;
   height: auto;
   padding: 0;
+}
+
+.rowAccount {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.spanAccount {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.ingresosSpan {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  display: center;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 5px;
+  background-color: #79c7a8;
+}
+
+.ingresosP {
+  font-size: 14px;
+  color: white;
+}
+
+.egresosSpan {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  display: center;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 5px;
+  background-color: #874f4f;
+}
+
+.egresosP {
+  font-size: 14px;
+  color: white;
 }
