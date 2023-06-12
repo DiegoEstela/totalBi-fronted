@@ -32,6 +32,7 @@ function Revenue() {
   } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data);
     setLoader(true);
     const userData = await getUserData(user?.uid);
     const result = await createRevenue(data, userData?.userId);
@@ -48,7 +49,6 @@ function Revenue() {
   const handleSelectChange = (prodId) => {
     const productSelected = products.find((prod) => prod.idproducto === prodId);
     if (productSelected) {
-      setValue("idCliente", customers[0]?.idcliente);
       setValue("idProducto", productSelected?.idproducto);
       setValue("monto", productSelected?.monto);
       setValue("nombreProducto", productSelected?.concepto);

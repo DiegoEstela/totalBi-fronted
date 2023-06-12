@@ -42,7 +42,6 @@
   padding: 0 20%;
   height: 6vh;
   border-radius: 5px;
-  color: var(--white);
 }
 
 .form_input_revenue {
@@ -65,6 +64,7 @@
   outline: none;
   font-family: "Roboto", sans-serif;
   color: var(--primary);
+  background-color: none;
 }
 
 .form_input_revenue_select:hover {
@@ -72,7 +72,6 @@
 }
 
 .form_label_revenue {
-  color: var(--primary);
   cursor: pointer;
   position: absolute;
   font-size: 1.1em;
@@ -146,7 +145,6 @@
     padding: 0 20%;
     height: 8vh;
     border-radius: 5px;
-    color: var(--white);
   }
 
   .form_input_revenue_select {
@@ -158,6 +156,7 @@
     outline: none;
     font-family: "Roboto", sans-serif;
     color: var(--primary);
+    background-color: none;
   }
 
   .form_input_revenue:focus + .form_label_revenue,
